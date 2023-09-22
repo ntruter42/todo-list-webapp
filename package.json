@@ -1,0 +1,45 @@
+{
+  "name": "todo-list-webapp",
+  "version": "1.0.0",
+  "description": "A simple todo list webapp.",
+  "main": "index.js",
+  "type": "module",
+  "license": "AGPL-version-3.0",
+  "private": false,
+  "engines": {
+    "node": ">= 18.0.0",
+    "npm": ">= 6.0.0"
+  },
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ntruter42/todo-list-webapp"
+  },
+  "bugs": "",
+  "keywords": [],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "contributors": [],
+  "scripts": {
+	"build": "dotenv -e .env psql $DB_URL -f sql/reset_database.sql",
+    "dev": "nodemon",
+    "test": "mocha --exit",
+	"start": "node index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-flash": "^0.0.2",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.17.3",
+    "pg-promise": "^11.5.4"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0"
+  }
+}

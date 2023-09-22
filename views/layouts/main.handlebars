@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Todo List | {{title}}</title>
+	<link rel="shortcut icon" href="/assets/icons/to-do.png" type="image/x-icon">
+
+	<link rel="stylesheet"
+		href="https://gist.githack.com/ntruter42/f89df17fc6975218ff5ec08b648c1c0e/raw/e2addc8473459276440dfe0f61819754ff90b92a/normalize.css">
+
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+	<nav>
+		<ul class="flex row">
+			{{#each nav}}
+			<li tabindex="1"><a class="flex justify align" href="{{link}}">{{title}}</a></li>
+			{{/each}}
+		</ul>
+	</nav>
+	{{{body}}}
+</body>
+
+</html>
