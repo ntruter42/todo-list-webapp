@@ -21,7 +21,15 @@ export default function App() {
 	app.engine('handlebars', engine({
 		defaultLayout: 'main',
 		viewPath: './views',
-		layoutsDir: './views/layouts'
+		layoutsDir: './views/layouts',
+		helpers: {
+			ifPosition: function (position, options) {
+				if (position === options.hash.position) {
+					return options.fn(this);
+				}
+				return options.inverse(this);
+			}
+		}
 	}));
 	app.set('view engine', 'handlebars');
 

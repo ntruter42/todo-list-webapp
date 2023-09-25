@@ -5,7 +5,7 @@ import todo_routes from "./routes/todo_routes.js";
 
 const app = app_setup();
 const db = db_config();
-const services = todo_services(db, process.env.NODE_ENV);
+const services = todo_services(db);
 
 app.use('/', todo_routes);
 

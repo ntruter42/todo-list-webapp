@@ -1,7 +1,23 @@
 <div class="flex col gap align view container">
 	<h1>{{title}}</h1>
 
-	{{#with message}}
-	<div class="{{type}} message">{{text}}</div>
-	{{/with}}
+	{{#each messages}}
+	{{#ifPosition position position='new-task'}}
+	<div class="pre-animation {{type}} message">{{text}}</div>
+	{{/ifPosition}}
+	{{/each}}
+
+	<form class="flex col gap container" action="/new" method="post">
+		<div>
+			<label for="new-task-title">Task:</label>
+			<input type="text" name="new-task-title" id="new-task-title">
+		</div>
+		<button type="submit">ADD</button>
+	</form>
+
+	{{#each messages}}
+	{{#ifPosition position position='task-list'}}
+	<div class="pre-animation {{type}} message">{{text}}</div>
+	{{/ifPosition}}
+	{{/each}}
 </div>

@@ -27,6 +27,8 @@
 	--input-border: 0.125rem;
 	--message-border: 0.125em;
 
+	--transition-time: 4s;
+
 	font-size: 16px;
 	font-family: 'Poppins', 'Segoe UI', sans-serif;
 }
@@ -101,6 +103,31 @@ h1 {
 	user-select: none;
 }
 
+form {
+	border: var(--form-border) solid var(--secondary-fg);
+	border-radius: 0.5rem;
+}
+
+input,
+button,
+select {
+	border: var(--input-border) solid var(--secondary-fg);
+	min-height: 2rem;
+}
+
+input {
+	border-top: none;
+	border-right: none;
+	border-bottom: var(--input-border) solid var(--secondary-fg);
+	border-left: none;
+	padding-inline: 0.25rem;
+}
+
+button {
+	border-radius: 0.25rem;
+	padding: 0.25rem 0.5rem;
+}
+
 /********** LAYOUT **********/
 
 .view {
@@ -167,12 +194,24 @@ h1 {
 .message {
 	background: var(--secondary-bg);
 	color: var(--secondary-fg);
-	border: var(--message-border) solid var(--secondary-fg);
+	border-style: solid;
+	border-width: var(--message-border);
+	border-color: var(--secondary-fg);
 	border-radius: 0.5em;
 
+	height: fit-content;
 	width: fit-content;
 	max-width: 100%;
 	padding: 0.5em 1em;
+
+	overflow: hidden;
+}
+
+.message.pre-animation {
+	border-width: 0;
+	height: 0;
+	padding: 0;
+	opacity: 0;
 }
 
 .message.error {
@@ -197,4 +236,73 @@ h1 {
 	background: var(--info-bg);
 	color: var(--info-fg);
 	border-color: var(--info-fg);
+}
+
+/********** TRANSITIONS / ANIMATIONS **********/
+
+.slide-in-out {
+	animation: slide-in-out var(--transition-time);
+}
+
+.fade-in-out {
+	animation: fade-in-out var(--transition-time);
+}
+
+@keyframes slide-in-out {
+	0% {
+		border-width: 0;
+		height: 0;
+		padding: 0;
+		opacity: 0;
+	}
+
+	6.25% {
+		border-width: var(--message-border);
+		height: fit-content;
+		padding: 0.5em 1em;
+		opacity: 1;
+	}
+
+	87.5% {
+		border-width: var(--message-border);
+		height: fit-content;
+		padding: 0.5em 1em;
+		opacity: 1;
+	}
+
+	100% {
+		border-width: 0;
+		height: 0;
+		padding: 0;
+		opacity: 0;
+	}
+}
+
+@keyframes fade-in-out {
+	0% {
+		opacity: 0;
+	}
+
+	12.5% {
+		opacity: 1;
+
+	}
+
+	87.5% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+/********** FUNCTIONALITY **********/
+
+.invisible {
+	opacity: 0;
+}
+
+.hidden {
+	display: none;
 }
