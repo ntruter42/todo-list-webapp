@@ -10,7 +10,15 @@
 	<form class="flex col gap container" action="/new" method="post">
 		<div>
 			<label for="new-task-title">Task:</label>
-			<input type="text" name="new-task-title" id="new-task-title">
+			{{#with form_data}}
+			<input type="text" name="new-task-title" id="new-task-title" value="{{title}}">
+			{{/with}}
+		</div>
+		<div>
+			<label for="new-task-datetime">Due Date & Time:</label>
+			{{#with form_data}}
+			<input type="datetime-local" name="new-task-datetime" id="new-task-datetime" value="{{datetime}}">
+			{{/with}}
 		</div>
 		<button type="submit">ADD</button>
 	</form>

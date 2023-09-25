@@ -17,6 +17,11 @@ router.get('/', async (req, res) => {
 		return message;
 	});
 
+	const form_data = {
+		title: req.flash('title')[0],
+		datetime: req.flash('datetime')[0]
+	}
+
 	res.render('index', {
 		nav: [
 			{ link: '/', title: 'Home' },
@@ -26,16 +31,33 @@ router.get('/', async (req, res) => {
 			{ link: '/month', title: 'Calender' }
 		],
 		title: 'Home',
-		messages
+		messages,
+		form_data
 	})
 });
 
 router.post('/new', async (req, res) => {
-	// req.flash('info', 'You clicked the ADD button');
-	req.flash('error', 'No task was added');
-	// req.flash('warning', 'Do not worry');
-	// req.flash('success', 'This is just a test message');
+	const new_task = {
+		user_id: 1, // user_id from session after auth
+		title: req.body['new-task-title'],
+		datetime: req.body['new-task-datetime']
+	}
+
+	if (new_task.title && new_task.datetime && await services.addTask(new_task)) {
+		req.flash('success', 'Task successfully added!');
+	} else {
+		if (!new_task.title) {
+			req.flash('error', 'Please enter a title');
+		} else if (!new_task.datetime) {
+			req.flash('error', 'Choose a due date and time');
+		} else {
+			req.flash('error', 'Task already exists');
+		}
+		req.flash('title', new_task.title);
+		req.flash('datetime', new_task.datetime);
+	}
 	req.flash('position', 'new-task');
+
 	res.redirect('/');
 });
 

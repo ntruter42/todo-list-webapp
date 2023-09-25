@@ -120,6 +120,7 @@ input {
 	border-right: none;
 	border-bottom: var(--input-border) solid var(--secondary-fg);
 	border-left: none;
+
 	padding-inline: 0.25rem;
 }
 
