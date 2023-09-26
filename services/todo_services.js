@@ -14,7 +14,16 @@ export default function (db) {
 		return await db.oneOrNone(query);
 	}
 
+	async function getTasks(user_id) {
+		let query = `SELECT task_id, title, due_datetime FROM todo.tasks`;
+		query += ` WHERE user_id = ${user_id}`;
+		query += ` ORDER BY due_datetime`;
+
+		return await db.manyOrNone(query);
+	}
+
 	return {
-		addTask
+		addTask,
+		getTasks
 	};
 }

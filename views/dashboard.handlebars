@@ -7,11 +7,11 @@
 	{{/ifPosition}}
 	{{/each}}
 
-	<form class="flex col gap container" action="/new" method="post">
+	<form class="flex col gap align container new-task" action="/new" method="post">
 		<div>
 			<label for="new-task-title">Task:</label>
 			{{#with form_data}}
-			<input type="text" name="new-task-title" id="new-task-title" value="{{title}}">
+			<input type="text" name="new-task-title" id="new-task-title" value="{{title}}" autocomplete="off">
 			{{/with}}
 		</div>
 		<div>
@@ -20,7 +20,7 @@
 			<input type="datetime-local" name="new-task-datetime" id="new-task-datetime" value="{{datetime}}">
 			{{/with}}
 		</div>
-		<button type="submit">ADD</button>
+		<button class="max" type="submit">ADD</button>
 	</form>
 
 	{{#each messages}}
@@ -28,4 +28,13 @@
 	<div class="pre-animation {{type}} message">{{text}}</div>
 	{{/ifPosition}}
 	{{/each}}
+
+	<div class="flex row gap wrap justify container task-list">
+		{{#each tasks}}
+		<div class="flex col gap container task">
+			<div>{{title}}</div>
+			<div>{{due_datetime}}</div>
+		</div>
+		{{/each}}
+	</div>
 </div>

@@ -26,6 +26,7 @@
 	--form-border: 0.125rem;
 	--input-border: 0.125rem;
 	--message-border: 0.125em;
+	--task-border: 0.125rem;
 
 	--transition-time: 4s;
 
@@ -103,11 +104,6 @@ h1 {
 	user-select: none;
 }
 
-form {
-	border: var(--form-border) solid var(--secondary-fg);
-	border-radius: 0.5rem;
-}
-
 input,
 button,
 select {
@@ -120,12 +116,11 @@ input {
 	border-right: none;
 	border-bottom: var(--input-border) solid var(--secondary-fg);
 	border-left: none;
-
-	padding-inline: 0.25rem;
 }
 
 button {
 	border-radius: 0.25rem;
+
 	padding: 0.25rem 0.5rem;
 }
 
@@ -190,20 +185,23 @@ button {
 	text-align: center;
 }
 
+.max {
+	width: 100%;
+	height: 100%;
+}
+
 /********** MESSAGES **********/
 
 .message {
 	background: var(--secondary-bg);
 	color: var(--secondary-fg);
-	border-style: solid;
-	border-width: var(--message-border);
-	border-color: var(--secondary-fg);
-	border-radius: 0.5em;
+	border: var(--message-border) solid var(--secondary-fg);
+	border-radius: 0.5rem;
 
 	height: fit-content;
 	width: fit-content;
 	max-width: 100%;
-	padding: 0.5em 1em;
+	padding: 0.5rem 1rem;
 
 	overflow: hidden;
 }
@@ -211,6 +209,7 @@ button {
 .message.pre-animation {
 	border-width: 0;
 	height: 0;
+	width: 0;
 	padding: 0;
 	opacity: 0;
 }
@@ -239,6 +238,40 @@ button {
 	border-color: var(--info-fg);
 }
 
+/********** TASKS **********/
+
+.new-task {
+	border: var(--form-border) solid var(--secondary-fg);
+	border-radius: 0.5rem;
+}
+
+.task-list {
+	border: var(--form-border) solid var(--secondary-fg);
+	border-radius: 0.5rem;
+
+	max-width: 16.25rem;
+
+	@media (min-width: 32.75rem) {
+		max-width: 31.75rem;
+	}
+
+	@media (min-width: 48.25rem) {
+		max-width: 47.25rem;
+	}
+
+	@media (min-width: 63.75rem) {
+		max-width: 62.75rem;
+	}
+}
+
+.task {
+	background: var(--secondary-bg);
+	border: var(--task-border) solid var(--secondary-fg);
+	border-radius: 0.25rem;
+
+	width: 15rem;
+}
+
 /********** TRANSITIONS / ANIMATIONS **********/
 
 .slide-in-out {
@@ -253,6 +286,7 @@ button {
 	0% {
 		border-width: 0;
 		height: 0;
+		width: 0;
 		padding: 0;
 		opacity: 0;
 	}
@@ -260,6 +294,7 @@ button {
 	6.25% {
 		border-width: var(--message-border);
 		height: fit-content;
+		width: fit-content;
 		padding: 0.5em 1em;
 		opacity: 1;
 	}
@@ -267,6 +302,7 @@ button {
 	87.5% {
 		border-width: var(--message-border);
 		height: fit-content;
+		width: fit-content;
 		padding: 0.5em 1em;
 		opacity: 1;
 	}
@@ -274,6 +310,7 @@ button {
 	100% {
 		border-width: 0;
 		height: 0;
+		width: 0;
 		padding: 0;
 		opacity: 0;
 	}

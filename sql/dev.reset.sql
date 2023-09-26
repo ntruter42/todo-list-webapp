@@ -21,5 +21,5 @@ INSERT INTO todo.users (username, full_name) VALUES ('emusk69', 'Elon Musk');
 INSERT INTO todo.tasks (user_id, title, due_datetime) VALUES (1, 'Go to the shop', '2023-09-30T15:00');
 INSERT INTO todo.tasks (user_id, title, due_datetime) VALUES (2, 'Start a company', '2024-01-01T04:20');
 INSERT INTO todo.tasks (user_id, title, due_datetime) VALUES (1, 'Collect meds', '2023-10-04T09:45');
-INSERT INTO todo.tasks (user_id, title, due_datetime) VALUES (1, 'Get a job', '2023-01-01T07:30');
+INSERT INTO todo.tasks (user_id, title, due_datetime) VALUES (1, 'Get a job', '2024-01-01T07:30');
 INSERT INTO todo.tasks (user_id, title, due_datetime) VALUES (2, 'Go to Mars', '2035-03-15T16:20');
