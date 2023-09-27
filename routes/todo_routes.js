@@ -3,7 +3,7 @@ import { services } from "../index.js";
 
 const router = Router();
 
-router.get('/dashboard', async (req, res) => {
+router.get('/', async (req, res) => {
 	const user = {
 		user_id: 1, // req.session.user_id,
 		full_name: 'Nicholas Truter' // req.session.full_name

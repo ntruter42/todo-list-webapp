@@ -13,8 +13,8 @@ router.get('/', (req, res) => {
 
 router.get('/login', async (req, res) => {
 	const form_data = {
-		title: req.flash('title')[0],
-		datetime: req.flash('datetime')[0]
+		username: req.flash('form_data_username')[0],
+		password: req.flash('form_data_password')[0]
 	}
 
 	const position = req.flash('position')[0];
@@ -39,6 +39,25 @@ router.get('/login', async (req, res) => {
 		messages,
 		form_data
 	})
+});
+
+router.post('/login', async (req, res) => {
+	const user = await services.getUser(req.body['login-username']);
+
+	if (user && await services.verify(req.body['login-password'], user.password)) {
+		req.session.user_id = user.user_id;
+		req.session.full_name = user.full_name;
+	} else {
+		req.flash('error', "The username or password entered is incorrect");
+	}
+
+	res.redirect('/');
+});
+
+router.get('/logout', async (req, res) => {
+	req.session.destroy(() => {
+		res.redirect('/login');
+	});
 });
 
 export default router;

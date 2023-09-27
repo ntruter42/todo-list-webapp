@@ -111,13 +111,6 @@ select {
 	min-height: 2rem;
 }
 
-input {
-	border-top: none;
-	border-right: none;
-	border-bottom: var(--input-border) solid var(--secondary-fg);
-	border-left: none;
-}
-
 button {
 	border-radius: 0.25rem;
 
@@ -238,11 +231,22 @@ button {
 	border-color: var(--info-fg);
 }
 
-/********** TASKS **********/
+/********** LOGIN **********/
+
+/* .login */
+
+/********** DASHBOARD **********/
 
 .new-task {
 	border: var(--form-border) solid var(--secondary-fg);
 	border-radius: 0.5rem;
+}
+
+.new-task input {
+	border-top: none;
+	border-right: none;
+	border-bottom: var(--input-border) solid var(--secondary-fg);
+	border-left: none;
 }
 
 .task-list {

@@ -1,4 +1,12 @@
 export default function (db) {
+	async function getUser(username) {
+		let query = `SELECT * FROM todo.users`;
+
+		if (!username) { return db.manyOrNone(query) }
+		else { query += ` WHERE username = '${username}'` }
+
+		return await db.oneOrNone(query);
+	}
 
 	async function addTask(new_task) {
 		let query = `INSERT INTO todo.tasks (user_id, title, due_datetime)`;
@@ -23,6 +31,7 @@ export default function (db) {
 	}
 
 	return {
+		getUser,
 		addTask,
 		getTasks
 	};

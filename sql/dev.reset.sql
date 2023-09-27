@@ -3,8 +3,9 @@ DROP TABLE IF EXISTS todo.users;
 
 CREATE TABLE todo.users (
 	user_id SERIAL PRIMARY KEY,
-	username VARCHAR(255) NOT NULL,
-	full_name VARCHAR(255) NOT NULL
+	username VARCHAR(255) NOT NULL UNIQUE,
+	full_name VARCHAR(255) NOT NULL,
+	password VARCHAR(60) NOT NULL
 );
 
 CREATE TABLE todo.tasks (

@@ -1,40 +1,31 @@
-<div class="flex col gap align view container">
+<div class="flex col gap justify align view container">
 	<h1>{{title}}</h1>
 
-	<form class="flex col gap align container" action="/new" method="post">
-		{{#each messages}}
-		{{#ifPosition position position='new-task'}}
-		<div class="{{type}} message">{{text}}</div>
-		{{/ifPosition}}
-		{{/each}}
+	{{#each messages}}
+	{{#ifPosition position position='login'}}
+	<div class="pre-animation {{type}} message">{{text}}</div>
+	{{/ifPosition}}
+	{{/each}}
 
-		<div>
-			<label for="new-task-title">Task:</label>
+	<form class="flex col gap align container login" action="/login" method="post">
+		<div class="flex col gap align">
+			<label for="login-username">Username:</label>
 			{{#with form_data}}
-			<input type="text" name="new-task-title" id="new-task-title" value="{{title}}" autocomplete="off">
+			<input class="center" type="text" name="login-username" id="login-username" value="{{username}}" autocomplete="off">
 			{{/with}}
 		</div>
-		<div>
-			<label for="new-task-datetime">Due Date & Time:</label>
+		<div class="flex col gap align">
+			<label for="login-password">Password:</label>
 			{{#with form_data}}
-			<input type="datetime-local" name="new-task-datetime" id="new-task-datetime" value="{{datetime}}">
+			<input class="center" type="password" name="login-password" id="login-password" value="{{password}}">
 			{{/with}}
 		</div>
-		<button class="max" type="submit">ADD</button>
+		<div class="container">
+			<button class="" type="submit">LOGIN</button>
+		</div>
 	</form>
 
-	<div class="flex row gap wrap justify align container task-list">
-		{{#each messages}}
-		{{#ifPosition position position='task-list'}}
-		<div class="pre-animation {{type}} message">{{text}}</div>
-		{{/ifPosition}}
-		{{/each}}
-
-		{{#each tasks}}
-		<div class="flex col gap container task">
-			<div>{{title}}</div>
-			<div>{{due_datetime}}</div>
-		</div>
-		{{/each}}
-	</div>
+	<div class="invisible">I</div>
+	<div class="invisible">L</div>
+	<div class="invisible">Y</div>
 </div>
