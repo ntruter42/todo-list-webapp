@@ -46,10 +46,12 @@ router.post('/login', async (req, res) => {
 
 	if (user && await services.verify(req.body['login-password'], user.password)) {
 		req.session.user_id = user.user_id;
+		req.session.username = user.username;
 		req.session.full_name = user.full_name;
 	} else {
 		req.flash('error', "The username or password entered is incorrect");
 	}
+	req.flash('position', "login");
 
 	res.redirect('/');
 });

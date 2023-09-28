@@ -1,3 +1,5 @@
+import bcrypt from "bcrypt";
+
 export default function (db) {
 	async function getUser(username) {
 		let query = `SELECT * FROM todo.users`;
@@ -30,9 +32,21 @@ export default function (db) {
 		return await db.manyOrNone(query);
 	}
 
+	async function hash(password) {
+		let password_hash = '';
+		while (password_hash.length !== 60) { password_hash = await bcrypt.hash(password, 10) }
+		return password_hash;
+	}
+
+	async function verify(password, password_hash) {
+		return await bcrypt.compare(password, password_hash);
+	}
+
 	return {
 		getUser,
 		addTask,
-		getTasks
+		getTasks,
+		hash,
+		verify
 	};
 }

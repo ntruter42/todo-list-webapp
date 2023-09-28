@@ -5,8 +5,8 @@ const router = Router();
 
 router.get('/', async (req, res) => {
 	const user = {
-		user_id: 1, // req.session.user_id,
-		full_name: 'Nicholas Truter' // req.session.full_name
+		user_id: req.session.user_id,
+		full_name: req.session.full_name
 	}
 
 	const position = req.flash('position')[0];
@@ -59,8 +59,8 @@ router.get('/', async (req, res) => {
 
 router.post('/new', async (req, res) => {
 	const user = {
-		user_id: 1, // req.session.user_id,
-		full_name: 'Nicholas Truter' // req.session.full_name
+		user_id: req.session.user_id,
+		full_name: req.session.full_name
 	}
 
 	const new_task = {

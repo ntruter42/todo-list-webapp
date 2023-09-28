@@ -16,8 +16,8 @@ CREATE TABLE todo.tasks (
 	UNIQUE (user_id, title, due_datetime)
 );
 
-INSERT INTO todo.users (username, full_name) VALUES ('ntruter42', 'Nicholas Truter');
-INSERT INTO todo.users (username, full_name) VALUES ('emusk69', 'Elon Musk');
+INSERT INTO todo.users (username, full_name, password) VALUES ('ntruter42', 'Nicholas Truter', '$2b$10$cxK.emL.AHc7XzMf5fVaTe5gFjNblOowr71YC.qFN4UJvZ902VKzG');
+INSERT INTO todo.users (username, full_name, password) VALUES ('emusk69', 'Elon Musk', '$2b$10$aTEFSH3iQnefKPT9L3cOFuiEYyzcaKqh9JsiQElcjB2d.Uyrdhu96');
 
 INSERT INTO todo.tasks (user_id, title, due_datetime) VALUES (1, 'Go to the shop', '2023-09-30T15:00');
 INSERT INTO todo.tasks (user_id, title, due_datetime) VALUES (2, 'Start a company', '2024-01-01T04:20');
