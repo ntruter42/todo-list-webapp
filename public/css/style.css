@@ -14,13 +14,18 @@
 	--accent-1: #0ff;
 	--accent-2: #f0f;
 
-	--error-bg: #fdd;
+	--error-bg: #fff;
+	--warning-bg: #fff;
+	--success-bg: #fff;
+	--info-bg: #fff;
+
+	/* --error-bg: #fdd; */
 	--error-fg: #c04;
-	--warning-bg: #fed;
+	/* --warning-bg: #fed; */
 	--warning-fg: #a60;
-	--success-bg: #efe;
+	/* --success-bg: #efe; */
 	--success-fg: #284;
-	--info-bg: #def;
+	/* --info-bg: #def; */
 	--info-fg: #48c;
 
 	--form-border: 0.125rem;
@@ -108,12 +113,17 @@ input,
 button,
 select {
 	border: var(--input-border) solid var(--secondary-fg);
-	min-height: 2rem;
+	border-radius: 0.5rem;
+}
+
+input {
+	min-height: 3rem;
 }
 
 button {
 	border-radius: 0.25rem;
 
+	min-height: 2rem;
 	padding: 0.25rem 0.5rem;
 }
 
@@ -233,20 +243,30 @@ button {
 
 /********** LOGIN **********/
 
-/* .login */
-
 /********** DASHBOARD **********/
 
 .new-task {
+	background: #fff8;
 	border: var(--form-border) solid var(--secondary-fg);
 	border-radius: 0.5rem;
 }
 
 .new-task input {
+	background: none;
+	border-color: var(--primary-fg);
 	border-top: none;
 	border-right: none;
-	border-bottom: var(--input-border) solid var(--secondary-fg);
+	border-bottom: var(--input-border) solid;
+	/* border-bottom: none; */
 	border-left: none;
+	border-radius: 0;
+
+	min-height: 2rem;
+	padding-left: 0.25rem;
+}
+
+.new-task input[type='text'] {
+	padding-left: 0.25rem;
 }
 
 .task-list {

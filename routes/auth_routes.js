@@ -42,14 +42,20 @@ router.get('/login', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-	const user = await services.getUser(req.body['login-username']);
-
-	if (user && await services.verify(req.body['login-password'], user.password)) {
-		req.session.user_id = user.user_id;
-		req.session.username = user.username;
-		req.session.full_name = user.full_name;
+	if (!req.body['login-username']) {
+		req.flash('error', "Enter a username");
+	} else if (!req.body['login-password']) {
+		req.flash('error', "Enter a password");
 	} else {
-		req.flash('error', "The username or password entered is incorrect");
+		const user = await services.getUser(req.body['login-username']);
+
+		if (user && await services.verify(req.body['login-password'], user.password)) {
+			req.session.user_id = user.user_id;
+			req.session.username = user.username;
+			req.session.full_name = user.full_name;
+		} else {
+			req.flash('error', "The username or password entered is incorrect");
+		}
 	}
 	req.flash('position', "login");
 
